@@ -5,6 +5,5 @@ def call() {
         nodes.add(c.node.selfLabel.name)
         }
     }
-    sh "echo $nodes"
     return nodes
 }
