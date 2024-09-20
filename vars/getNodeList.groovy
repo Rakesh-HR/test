@@ -20,11 +20,14 @@ def call() {
             
             nodeInfo[nodeName] = [
                 total: totalExecutors,
-                free: freeExecutors
+                free: freeExecutors,
+                utilization: busyExecutors/totalExecutors*100
             ]
         }
     }
     
+    nodeInfo = nodeInfo.sort { a, b -> a.value.utilization <=> b.value.utilization }
+
     nodeInfo.each { nodeName, info ->
         echo "Node: ${nodeName}, Total Executors: ${info.total}, Free Executors: ${info.free}"
     }
