@@ -29,7 +29,7 @@ def call() {
     nodeInfo = nodeInfo.sort { a, b -> a.value.utilization <=> b.value.utilization }
 
     nodeInfo.each { nodeName, info ->
-        echo "Node: ${nodeName}, Total Executors: ${info.total}, Free Executors: ${info.free}"
+        echo "Node: ${nodeName}, Utilization: ${info.utilization}%"
     }
     
     return nodeInfo
